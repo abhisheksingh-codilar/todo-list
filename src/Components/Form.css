@@ -90,6 +90,9 @@ svg{
     position: absolute;
     right: 5%;
 }
+.svg:hover{
+    fill:red;
+}
 
 .todo-footer{
     padding: 20px;
@@ -107,4 +110,22 @@ svg{
     padding: 10px;
     color: #777a92;
     cursor: pointer;
+}
+
+
+.todo-footer>button:active{
+    color: blue;
+}
+
+
+@media (min-width:30px) and (max-width:767px) {
+    .todo-footer{
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color:white;
+    }
+    
 }
