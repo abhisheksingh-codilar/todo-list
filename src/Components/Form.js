@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import "./Form.css"
 
-export default function Form() {
+export default function Form({setActive,isActive}) {
 
     const getLocalItems = ()=>{
         const list = localStorage.getItem('lists');
@@ -17,6 +17,7 @@ export default function Form() {
     const [items, setItems]=useState(getLocalItems());
     const [status,setStatus] =useState('All');
     const [filterTodos,setFilterTodos] = useState([]);
+   
 
 
     const filterHandler = () => {
@@ -97,21 +98,13 @@ export default function Form() {
     
       };
 
-
-     
-
-   
-
-
-    
-
     return (
         <div>
                 <form onSubmit={addItem}>
 
                
                 <div className="form-inner"  >
-                <input  type="text"  placeholder="Create a new todo..." value={inputData} 
+                <input  type="text" className="todo-input"  placeholder="Create a new todo..." value={inputData} 
                 onChange={(e)=> {
                     setInputData(e.target.value)
                 }}
@@ -126,10 +119,10 @@ export default function Form() {
                     {
                        filterTodos.map((el,i)=>{
                             return(
-                                <li key={i} className="lists">
+                                <li key={i} className={isActive ? "lists" : "lists-black"}>
                                 <input type="checkbox" className="item-check" checked={el.completed}   onClick={() => completeHandler(el.id)}/>
                                 <span style={el.completed?{textDecoration:"line-through"}:null}>{el.text}</span>  
-                                <svg xmlns="http://www.w3.org/2000/svg"className="svg" width="18" height="18"onClick={() => del(i)}><path  d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"></path></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg"className={isActive ? "svg" : "svg-black"} width="18" height="18"onClick={() => del(i)}><path  d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"></path></svg>
                             </li>
                             )
                            
