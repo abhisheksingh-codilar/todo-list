@@ -137,6 +137,7 @@ export default function Form() {
                     }
 
                     <div className="todo-footer">
+                     <span>counr</span>
                     <button onClick={statusHandler} >All</button>
                     <button onClick={statusHandler}>Active</button>
                     <button onClick={statusHandler}>Completed</button>
